@@ -1,12 +1,15 @@
 # Importações
 import sys
+import os
 import numpy as np
 
 # A função realiza a leitura de um arquivo .txt e carrega os dados em uma lista
 # retorna os dados no formato numpy.ndarray
 
 def leitura(nome_instancia):
-    with open("/home/rodolfo/Documents/3 semestre/Algoritmos em Grafos/datasets/"+nome_instancia+".txt", 'r') as f:
+    caminho = r"C:\Users\joser\Documents\3 semestre\Algoritmos em Grafos\datasets"
+    caminho = os.path.join(caminho, f"{nome_instancia}.txt")
+    with open(caminho, 'r') as f:
 
         mat = []
         for i in f.readlines():
@@ -19,8 +22,8 @@ def leitura(nome_instancia):
 # além de exibir na tela no formato nome_instancia qtd_linhas qtd_colunas
 
 def salvaResultado(nome_instancia, qtd_linhas, qtd_colunas):
-    arq = open("resultados.txt", 'a+')
-    arq.write(f'{nome_instancia} {qtd_linhas} {qtd_colunas}\n')
+    with open("resultados.txt", 'a+') as arq:
+        arq.write(f'{nome_instancia} {qtd_linhas} {qtd_colunas}\n')
     print(f'{nome_instancia} {qtd_linhas} {qtd_colunas}')
     arq.close()
    
